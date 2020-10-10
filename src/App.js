@@ -117,6 +117,7 @@ class App extends React.Component {
         decimalUsed: false,
         dataEntered: false,
         lastEntry: event.target.value,
+        negativeSign: false,
       });
     } else if (event.target.value === '-') {
       this.setState({
