@@ -167,7 +167,7 @@ class App extends React.Component {
           operator={this.handleOperator}/>
         <Equals equals={this.handleEquals}/>
         <Clear clear={this.handleClear}/>
-        <ReactFCCtest />
+        
       </div>
     );  
   }
