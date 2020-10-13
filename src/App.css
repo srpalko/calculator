@@ -2,8 +2,34 @@
   text-align: center
 }
 
+#numbers {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  justify-content: center;
+  grid-column-gap: 5px;
+}
+
+
 button {
   width: 100px;
   height: 100px;
-  font-size: larger;
+  font-size: 50px;
+  font-weight: bolder;
+  margin: 3px;
+}
+
+#equals {
+  width: 200px;
+}
+
+#clear {
+  width: 200px;
+}
+
+#formula {
+  height: 30px;
+}
+
+#display {
+  font-size: 50px;
 }
