@@ -84,7 +84,7 @@ class App extends React.Component {
   handleNumbers(event) {
     /* If no number has been entered, a non-zero number is allowed. */
     if (!this.state.dataEntered) {
-      //if (event.target.value !== '0') {
+     // if (event.target.value !== '0') {
         this.setState({
             display: event.target.value,
             dataEntered: true,
@@ -93,7 +93,10 @@ class App extends React.Component {
         });  
       //} 
       /* If a number has begun, keep adding digits. */
-    } else if (this.state.dataEntered) {
+    } else if (this.state.currentEntry === "0") {
+      return;
+    }
+       else if (this.state.dataEntered) {
         if (!(this.state.currentEntry === '0' && event.target.value === '0')) {
           this.setState({
             display: this.state.display + event.target.value,
@@ -145,7 +148,7 @@ class App extends React.Component {
     /* checks for an open '(' and returns a ')' */ 
     const parenthClose = this.parenthCloseTest();
     /* regex to check for operator input */
-    const operators = /\+|-|\*|\//;
+    const operators = /\+|-|\*|\/|=/;
 
     /* checks for previous operator input. If not, adds operator to formula with closing parentesis if needed.
     Then it resets input flags for the next numerical entry  */ 
@@ -167,11 +170,17 @@ class App extends React.Component {
       });
       /* If any other operators are input consecutively, this replaces the previous entry with the latest one.  */
     } else {
-      const alteredFormula = this.state.formula.slice(0, -1) + event.target.value;
-      this.setState({
-        formula: alteredFormula,
-        lastEntry: event.target.value,
-      })
+        var alteredFormula = '';
+        if (this.state.lastEntry === "-") {
+          alteredFormula = this.state.formula.slice(0, -3) + event.target.value;
+        } else {
+            alteredFormula = this.state.formula.slice(0, -1) + event.target.value;
+          } 
+        this.setState({
+          formula: alteredFormula,
+          lastEntry: event.target.value,
+          negativeSign: false,
+        });
     }
   }
 
