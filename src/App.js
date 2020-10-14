@@ -121,12 +121,14 @@ class App extends React.Component {
         decimalUsed: true, 
         dataEntered: true,
         lastEntry: event.target.value,
+        currentEntry: '0' + event.target.value,
       });
     } else if (this.state.decimalUsed === false) {
       this.setState({
         display: this.state.display + event.target.value,
         decimalUsed: true,
         lastEntry: event.target.value,
+        currentEntry: '0' + event.target.value,
       });
     }
   }
